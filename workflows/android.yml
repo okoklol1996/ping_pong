@@ -1,25 +1,24 @@
-name: Build Android APK
+name: Build My Game
 on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build APK
-        run: ./gradlew assembleEmbedNoRecordDebug
+      - name: Build Debug APK
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleEmbedNoRecordDebug
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: my-game-debug-apk
+          name: my-game-app
           path: app/build/outputs/apk/embedNoRecord/debug/*.apk
-
