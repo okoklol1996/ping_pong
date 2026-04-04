@@ -1,8 +1,8 @@
-name: Mobile Solo Build
+name: Fix and Build
 on: [push, workflow_dispatch]
 
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,12 +13,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build
+      - name: Fix Missing SDK Path
+        run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+      - name: Build Debug APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleEmbedNoRecordDebug
-      - name: Get APK
+          ./gradlew assembleDebug
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: my-game
-          path: app/build/outputs/apk/embedNoRecord/debug/*.apk
+          name: game-apk
+          path: "**/*.apk"
