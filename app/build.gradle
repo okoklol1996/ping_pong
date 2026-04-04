@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId project.properties["app.application_id"]
-        versionCode project.properties["app.version_code"].toInteger()
-        versionName project.properties["app.version_name"]
+        versionCode project.properties["1"].toInteger()
+        versionName project.properties["1.0.0"]
         minSdk 23
         compileSdk 35
         targetSdk 35
