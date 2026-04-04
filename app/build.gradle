@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace "org.love2d.android"
+    namespace "com.okoklol1996.pingpongoffline"
     ndkVersion '27.1.12297006'
 
     defaultConfig {
