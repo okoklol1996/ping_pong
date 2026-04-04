@@ -1,7 +1,7 @@
 import java.nio.charset.StandardCharsets
 
 plugins {
-    id 'com.android.application'
+    id 'com.okoklol1996.pingpongoffline'
 }
 
 android {
