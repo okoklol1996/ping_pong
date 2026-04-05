@@ -8,13 +8,12 @@ plugins {
 android {
     namespace "com.okoklol1996.pingpongoffline"
     ndkVersion '27.1.12297006'
-
+    compileSdk 35
     defaultConfig {
         applicationId "com.okoklol1996.pingpongoffline"
         versionCode project.properties["1"].toInteger()
         versionName project.properties["1.0.0"]
         minSdk 23
-        compileSdk 35
         targetSdk 35
 
         externalNativeBuild {
