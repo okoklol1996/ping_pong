@@ -8,19 +8,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Fix Missing SDK Path
-        run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          cache: 'gradle' # Helps avoid timeout/network errors
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Fix Permissions
+        run: chmod +x gradlew
+
       - name: Build Debug APK
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
-      - name: Upload
+        # If your 'gradlew' is inside a folder, add: 
+        # working-directory: ./ping_pong
+        run: ./gradlew assembleDebug
+
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: game-apk
-          path: "**/*.apk"
+          path: "**/*.apk" # Grabs any APK generated
