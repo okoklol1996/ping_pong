@@ -1,8 +1,9 @@
 import java.nio.charset.StandardCharsets
 
 plugins {
-    id 'com.okoklol1996.pingpongoffline'
+    id 'com.android.application'
 }
+
 
 android {
     namespace "com.okoklol1996.pingpongoffline"
