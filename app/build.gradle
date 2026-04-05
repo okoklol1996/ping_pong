@@ -10,7 +10,7 @@ android {
     ndkVersion '27.1.12297006'
 
     defaultConfig {
-        applicationId project.properties["app.application_id"]
+        applicationId "com.okoklol1996.pingpongoffline"
         versionCode project.properties["1"].toInteger()
         versionName project.properties["1.0.0"]
         minSdk 23
